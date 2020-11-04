@@ -1,5 +1,6 @@
 import { Text } from './text.js';
 import { Particle } from './particle.js';
+import { hslToHex } from './utils.js';
 
 export class Visual {
     constructor() {
@@ -28,7 +29,7 @@ export class Visual {
 
         for (let i = 0; i < 10; i++) {
             const myPos = this.pos[(Math.random() * this.posTotal) | 0];
-            this.particles.push(new Particle(myPost, this.getColor()));
+            this.particles.push(new Particle(myPos, this.getColor()));
         }
 
         for (let i = 0; i < this.particles.length; i++) {
@@ -43,7 +44,7 @@ export class Visual {
             const minDist = item.radius + this.mouse.radius;
 
             if (dist < minDist) {
-                item.prgress += 100;
+                item.progress += 100;
             }
 
             item.draw(ctx);
@@ -51,7 +52,10 @@ export class Visual {
     }
 
     getColor() {
-        return '#ff0000'
+        const minHue = 80;
+        const maxHue = 340;
+        const hue = (maxHue - minHue) * Math.random() + minHue;
+        return hslToHex(hue, 84, 50)
     }
 
     onMove(e) {
