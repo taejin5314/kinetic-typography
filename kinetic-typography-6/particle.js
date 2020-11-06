@@ -1,3 +1,5 @@
+import { hslToHex } from './utils.js';
+
 export class Particle {
     constructor(pos, groupRatio, indexRatio, texture) {
         this.sprite = new PIXI.Sprite(texture);
@@ -14,7 +16,7 @@ export class Particle {
         const maxHue = 330;
         const hue = (maxHue - minHue) * groupRatio + minHue;
 
-        this.sprite.tint = 0xff0000;
+        this.sprite.tint = hslToHex(hue, 84, light);
 
         this.x = pos.x;
         this.y = pos.y;
@@ -24,5 +26,15 @@ export class Particle {
         this.vx = 0;
         this.vy = 0;
 
+    }
+
+    animate(index, total) {
+        if (indx < total) {
+            this.x += this.vx;
+            this.y += this.vy;
+        }
+
+        this.sprite.x = this.x;
+        this.sprite.y = this.y;
     }
 }
