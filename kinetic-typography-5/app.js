@@ -1,4 +1,6 @@
 import { Text } from './text.js';
+import { Visual } from './visual.js';
+import { setColor } from './color.js';
 
 class App {
     constructor() {
