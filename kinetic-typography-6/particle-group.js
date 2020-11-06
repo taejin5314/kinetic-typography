@@ -35,7 +35,7 @@ export class ParticleGroup {
 
             if (i < total - 1) {
                 const next = this.particles[i + 1];
-                this.setAngle(item, nex, 0);
+                this.setAngle(item, next, 0);
                 this.setAngle(next, item, Math.PI);
             }
 
@@ -60,7 +60,7 @@ export class ParticleGroup {
     setAngle(item1, item2, connectAngle) {
         const angle = connectAngle - DEFAULT_ANGLE;
         const tx = item1.x + Math.cos(angle);
-        const ty = item2.y + Math.sin(angle);
+        const ty = item1.y + Math.sin(angle);
         const vx = (item2.x - tx) * VERTICAL_RATE;
         const vy = (item2.y - ty) * VERTICAL_RATE;
         item1.vx += vx;

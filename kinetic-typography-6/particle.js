@@ -12,8 +12,8 @@ export class Particle {
         const maxLight = 40;
         const light = (maxLight - minLight) * indexRatio + minLight;
 
-        const minHue = 280;
-        const maxHue = 330;
+        const minHue = 80;
+        const maxHue = 130;
         const hue = (maxHue - minHue) * groupRatio + minHue;
 
         this.sprite.tint = hslToHex(hue, 84, light);
@@ -29,7 +29,7 @@ export class Particle {
     }
 
     animate(index, total) {
-        if (indx < total) {
+        if (index < total) {
             this.x += this.vx;
             this.y += this.vy;
         }
