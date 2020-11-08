@@ -17,7 +17,7 @@ export class Visual {
     }
 
     show(stageWidth, stageHeight) {
-        this.pos = this.text.setText('S', 5, stageWidth, stageHeight);
+        this.pos = this.text.setText('H', 5, stageWidth, stageHeight);
 
         this.strings = [];
         for (let i = 0; i < this.pos.outline.length; i++) {
